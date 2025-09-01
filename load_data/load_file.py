@@ -13,11 +13,12 @@ def load_file_txt(file_name):
 def load_file_csv(file_name):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     file_path = os.path.join(BASE_DIR, 'data', file_name)
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r',encoding='utf-8') as file:
         reader = csv.reader(file)
         data = list(reader)
     return data
 def write_json(file_name,data):
-    with open(file_name, 'w') as file:
-        json.dump(data,file_name,indent=2,ensure_ascii=False)
+    with open(file_name, 'w',encoding='utf-8') as file:
+        json.dump(data,file,indent=2,ensure_ascii=False)
+    return
 
