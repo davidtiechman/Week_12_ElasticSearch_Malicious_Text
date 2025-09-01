@@ -1,2 +1,1 @@
-##
-![diagram.png]['diagram.pnd']
+![image](diagram.png)
