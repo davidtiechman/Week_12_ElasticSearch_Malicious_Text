@@ -1,2 +1,2 @@
 ##
-![diagram.pnd]['diagram.pnd']
+![diagram.png]['diagram.pnd']
