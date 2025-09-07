@@ -4,17 +4,19 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from connect_elastics.main import run_pipeline
 import threading
+import logging
 
 app = FastAPI()
 processing_done = False  # דגל גלובלי
+logging.basicConfig(level=logging.DEBUG)
 
 
 def background_pipeline():
     global processing_done
-    print("Starting pipeline in background...")
+    logging.info("Starting pipeline in background...")
     run_pipeline()
     processing_done = True
-    print("Pipeline finished!")
+    logging.info("Pipeline finished!")
 
 
 @app.get("/antisemitic_with_weapon")
@@ -51,6 +53,7 @@ def multiple_weapons():
 
 
 if __name__ == "__main__":
+    logging.info("Starting pipeline in background...")
     # מריצים את הפייפליין ברקע (thread)
     t = threading.Thread(target=background_pipeline)
     t.start()

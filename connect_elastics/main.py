@@ -1,11 +1,11 @@
-def run_pipeline():
-    from convert_to_object import convert_to_df, convert_to_dict
-    from load_data.load_file import load_file_csv, write_json
-    from index_documents import IndexElasticsearch
-    from get_elastics import GetElastic
-    import pandas as pd
-    from processing.analysis import Processing
+from convert_to_object import convert_to_df, convert_to_dict
+from load_data.load_file import load_file_csv, write_json
+from connect_elastics.index_documents import IndexElasticsearch
+from connect_elastics.get_elastics import GetElastic
+import pandas as pd
+from processing.analysis import Processing
 
+def run_pipeline():
     csv = load_file_csv('tweets_injected 3.csv')
     dictionary = convert_to_dict(csv)
     insert = IndexElasticsearch('antisemitic_tweets')
